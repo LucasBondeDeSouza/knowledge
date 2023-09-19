@@ -8,7 +8,8 @@ module.exports = {
     },
     pool: {
       min: 2,
-      max: 10
+      max: 30,
+      acquireConnectionTimeout: 60000
     },
     migrations: {
       tableName: 'knex_migrations'
