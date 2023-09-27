@@ -1,7 +1,11 @@
 <template>
     <div class="article-admin">
+
+        <!-- Formulário -->
         <b-form>
             <input id="article-id" type="hidden" v-model="article.id" />
+
+                <!-- Input (Nome do Artigo) -->
                 <b-form-group label="Nome:" label-for="article-name">
                     <b-form-input id="article-name" type="text"
                         v-model="article.name" required
@@ -9,15 +13,19 @@
                         placeholder="Informe o Nome do Artigo...">
                     </b-form-input>
                 </b-form-group>
+                <!-- Fim Input (Nome do Artigo) -->
 
+                <!-- Input (Descrição do Artigo) -->
                 <b-form-group label="Descrição:" label-for="article-description">
                     <b-form-input id="article-description" type="text"
                         v-model="article.description" required
                         :readonly="mode === 'remove'"
-                        placeholder="Informe o Nome do Artigo...">
+                        placeholder="Informe a Descrição do Artigo...">
                     </b-form-input>
                 </b-form-group>
+                <!-- Fim Input (Descrição do Artigo) -->
 
+                <!-- Input (URL da Imagem) -->
                 <b-form-group v-if="mode === 'save'"
                     label="Imagem (URL):" label-for="article-imageUrl">
                     <b-form-input id="article-imageUrl" type="text"
@@ -26,6 +34,7 @@
                         placeholder="Informe a URL da Imagem...">
                     </b-form-input>
                 </b-form-group>
+                <!-- Fim Input (URL da Imagem) -->
 
                 <b-form-group v-if="mode === 'save'"
                     label="Categoria:" label-for="article-categoryId">
@@ -45,6 +54,7 @@
                         placeholder="Informe o Conteúdo do Artigo..." />
                 </b-form-group>
 
+                <!-- Botões -->
                 <b-button variant="primary" v-if="mode === 'save'"
                     @click="save">Salvar
                 </b-button>
@@ -54,7 +64,9 @@
                 </b-button>
 
                 <b-button class="ml-2" @click="reset">Cancelar</b-button>
+                <!-- Fim Botões -->
         </b-form>
+        <!-- Fim Formulário -->
 
         <hr>
 
