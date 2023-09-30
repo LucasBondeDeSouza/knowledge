@@ -4,7 +4,8 @@
 		    :hideToggle="!user"
 			:hideUserDropdown="!user" />
 		<Menu v-if="user" />
-		<Content />
+		<Loading v-if="validatingToken" />
+		<Content v-else />
 		<Footer />
 	</div>
 </template>
@@ -17,10 +18,11 @@ import Header from "@/components/template/Header.vue"
 import Menu from "@/components/template/Menu.vue"
 import Content from "@/components/template/Content.vue"
 import Footer from "@/components/template/Footer.vue"
+import Loading from '@/components/template/Loading'
 
 export default {
 	name: "App",
-	components: { Header, Menu, Content, Footer },
+	components: { Header, Menu, Content, Footer, Loading },
 	computed: mapState(['isMenuVisible', 'user']),
 	data: function() {
 		return {
@@ -29,7 +31,7 @@ export default {
 	},
 
 	methods: {
-		async validatingToken() {
+		async validateToken() {
 			this.validatingToken = true
 
 			const json = localStorage.getItem(userKey)
@@ -56,7 +58,7 @@ export default {
 	},
 
 	created() {
-		this.validatingToken()
+		this.validateToken()
 	}
 }
 </script>
